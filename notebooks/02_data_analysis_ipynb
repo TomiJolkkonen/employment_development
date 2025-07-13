@@ -1,0 +1,15 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_parquet('../data/processed/employment_cleaned.parquet')
+
+# Keskiarvotyöllisyys per vuosi
+yearly = df.groupby('year')['employment_rate'].mean().reset_index()
+
+plt.figure(figsize=(10,6))
+sns.lineplot(data=yearly, x='year', y='employment_rate', marker='o')
+plt.title('Työllisyysaste Suomessa 2020–2024')
+plt.ylabel('%')
+plt.grid(True)
+plt.show()

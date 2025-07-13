@@ -1,0 +1,13 @@
+import pandas as pd
+
+df = pd.read_parquet('../data/processed/employment_cleaned.parquet')
+
+# Valmistele fact-taulu Power BI:lle
+fact = df.groupby(['region', 'year']).agg({
+    'employed': 'sum',
+    'unemployed': 'sum',
+    'population': 'sum',
+    'employment_rate': 'mean'
+}).reset_index()
+
+fact.to_parquet('../data/processed/fact_employment.parquet', index=False)
