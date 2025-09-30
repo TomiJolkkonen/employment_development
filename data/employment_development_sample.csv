@@ -1,0 +1,4 @@
+date,region,unemployment_rate,job_openings
+2020-01-01,Helsinki,6.5,12000
+2020-02-01,Helsinki,6.4,12150
+2020-03-01,Helsinki,7.0,11500
